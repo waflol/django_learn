@@ -1,0 +1,16 @@
+{% extends 'polls/base.html' %}
+{% block noidung %}
+<h1>DCMMMM {{name}}</h1>
+<p>test</p>
+<h2>Assets: </h2>
+<ul>
+    {% for item in assets %}
+    {%if item != "PC" %}
+    <li>
+        {{item}}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endblock noidung %}
+

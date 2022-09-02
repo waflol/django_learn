@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+
+{% block noidung %}
+    {% if qs %}
+    <h1>{{qs.question_text}}</h1>
+    <form action="{% url 'polls:vote' qs.id %}" method="post">
+        {% csrf_token %}
+        <ul>
+            {% for item in qs.choice_set.all %}
+            <li>
+                <input type="radio" value="{{item.id}}" name="choice">
+                {{item.choice_text}}
+            </li>
+            {% endfor %}
+        </ul>
+        <p><input type="submit" value="send"></p>
+    </form>
+    {% else %}
+        <h3 style="color:rgb(88, 42, 42);">Câu hỏi này không tồn tại</h3>
+    {% endif %}
+{% endblock noidung %}  
